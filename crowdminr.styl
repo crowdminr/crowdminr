@@ -3,11 +3,25 @@
 body
   margin 0
   padding 0
+  font-family 'DIN WebLight', sans-serif
+  font-weight 100
+  .list-ranking
+    ul, .details
+      box-sizing border-box
+      float left
+    ul
+      width 40%
+      li
+        margin 0 20px 20px 0
+        padding 10px 20px
+        // original: background-color #06ba8f
+        // 0.8 to white: background-color #cdf1e8
+        // 0.9 to white
+        background-color #e6f8f3
+        border-radius 3px
+    .details
+      width 60%
   .content
-    font-family 'DIN WebLight', sans-serif
-    font-weight 100
-    text-align center
-    width 100%
     h1
       font-weight 100
       .bold
@@ -17,6 +31,7 @@ body
       font-weight 100
 
   .slides
+    text-align center
     width 960px
 
     .slide
@@ -28,8 +43,15 @@ body
       transition opacity 0.5s
       &.current
         opacity 1
+      h1
+        font-size 8em
+      h2
+        font-size 4em
+      ul, p
+        font-size 2em
 
 .container
+  width 100%
   position relative
   margin-left auto
   margin-right auto

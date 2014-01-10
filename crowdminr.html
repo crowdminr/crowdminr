@@ -3,37 +3,61 @@
 </head>
 
 <body>
-  <div class="container content">
-    {{> layout}}
-  </div>
+  {{> layout}}
 </body>
 
 <template name="layout">
-  {{yield}}
+  <div class="container">
+    {{yield}}
+  </div>
 </template>
 
 <template name="home">
-  <h1>You're at home</h1>
+  <header>
+    <p>
+      <label>Risk Tolerance: </label>
+      <select>
+        <option value="low">Loud noises scare me</option>
+        <option value="medium">I'm prepared to take some risk</option>
+        <option value="high">I just want to maximise my expected return</option>
+      </select>
+    </p>
+  </header>
+  {{> list-ranking}}
+</template>
+
+<template name="list-ranking">
+  <div class="list-ranking">
+    <ul>
+      {{#each loans}}
+      <li class="list-item">
+        Estimated net return: {{rate}}%
+      </li>
+      {{/each}}
+    </ul>
+    <div class="details">I'm on the right</div>
+  </div>
 </template>
 
 <template name="about">
   <div class="slides container">
     <p>4 minutes max</p>
     <section class="slide" id="title">
-      <h1><span class="bold">Crowdminr</span></h1>
+      <h1><span class="bold">Crowdmi.nr</span></h1>
       <h2>Bloomberg, for Crowdfunding</h2>
     </section>
     <section class="slide" id="problem">
-      <h1>Finance is being democratised. <span class="bold">But not enough.</span></h1>
+      <h2>Finance is being democratised.</h2>
+      <h2><span class="bold">But not enough.</span></h2>
       <ul>
         <li>Crowdfunding promises great returns for the rest of us.</li>
         <li>But we can't keep track of the best deals!</li>
       </ul>
     </section>
     <section class="slide" id="solution">
-    <h1>Crowdmi.nr tells you where the <span class="bold">best investments</span>  are across all major crowdfunding sites <span class="bold">in real time.</span></h1>
+    <h2>Beat the Bankers</h2>
+    <p>Crowdmi.nr tells you where the <span class="bold">best investments</span>  are <br /> across all major crowdfunding sites <span class="bold">in real time.</span></p>
     </section>
-    <section class="slide" id="mockup">Show the actual drawings for the proposed web app.</section>
     <section class="slide" id="stack">Show the stack</section>
   </div>
 </template>
