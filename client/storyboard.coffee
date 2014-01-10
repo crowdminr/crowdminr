@@ -3,20 +3,22 @@ window.story = new Miso.Storyboard
   context: $('.content')
   scenes:
     title:
-      enter: -> ($ '#title').addClass 'current'
-      exit: -> ($ '#title').removeClass 'current'
+      enter: -> setTimeout (-> ($ '#title').addClass 'current'), 300
+      exit: -> ($ '.slide').removeClass 'current'
     problem:
-      enter: -> ($ '#problem').addClass 'current'
-      exit: -> ($ '#problem').removeClass 'current'
+      enter: -> setTimeout (-> ($ '#problem').addClass 'current'), 300
+      exit: -> ($ '.slide').removeClass 'current'
     solution:
-      enter: -> ($ '#solution').addClass 'current'
-      exit: -> ($ '#solution').removeClass 'current'
+      enter: -> setTimeout (-> ($ '#solution').addClass 'current'), 300
+      exit: -> ($ '.slide').removeClass 'current'
     mockup:
-      enter: -> ($ '#mockup').addClass 'current'
-      exit: -> ($ '#mockup').removeClass 'current'
+      enter: ->
+        ($ '.slide').removeClass 'current'
+        setTimeout (-> Router.go 'home'), 300
+      exit: -> Router.go 'about'
     stack:
-      enter: -> ($ '#stack').addClass 'current'
-      exit: -> ($ '#stack').removeClass 'current'
+      enter: -> setTimeout (-> ($ '#stack').addClass 'current'), 300
+      exit: -> ($ '.slide').removeClass 'current'
 
 Meteor.startup ->
   story.start()
@@ -35,7 +37,3 @@ Meteor.startup ->
         story.to slides[slide]
 
   )()
-# story.to('pane2').then -> story.to('done')
-#
-
-

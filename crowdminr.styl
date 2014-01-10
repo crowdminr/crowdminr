@@ -1,10 +1,13 @@
 @import 'nib'
 
 body
+  margin 0
+  padding 0
   .content
     font-family 'DIN WebLight', sans-serif
     font-weight 100
     text-align center
+    width 100%
     h1
       font-weight 100
       .bold
@@ -13,18 +16,23 @@ body
     h2
       font-weight 100
 
-  .slide
-    // display none
-    opacity 0
-    transition opacity 1s
-    &.current
-      // display block
-      opacity 1
+  .slides
+    width 960px
+
+    .slide
+      width 960px
+      // display none
+      position absolute
+      opacity 0
+      display block
+      transition opacity 0.5s
+      &.current
+        opacity 1
 
 .container
-  width 970px
-  padding-left auto
-  padding-right auto
+  position relative
+  margin-left auto
+  margin-right auto
 
 ul
   list-style-type none

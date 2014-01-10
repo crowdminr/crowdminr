@@ -1,0 +1,10 @@
+Router.configure
+  layoutTemplate: 'layout'
+
+Router.map ->
+  @route 'home',
+    path: '/'
+    template: 'home'
+
+  @route 'about',
+    path: '/about'

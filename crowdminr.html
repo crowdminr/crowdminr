@@ -3,25 +3,37 @@
 </head>
 
 <body>
-  <div class="content">
-    {{> slides}}
+  <div class="container content">
+    {{> layout}}
   </div>
 </body>
 
-<template name="slides">
-  <p>4 minutes max</p>
-  <section class="slide" id="title">
-    <h1><span class="bold">Crowdminr</span></h1>
-    <h2>Bloomberg, for Crowdfunding</h2>
-  </section>
-  <section class="slide" id="problem">
-    <h1>Finance is being democratised. <span class="bold">But not enough.</span></h1>
-    <ul>
-      <li>Crowdfunding promises great returns for the rest of us.</li>
-      <li>We can't keep track of the best deals!</li>
-    </ul>
-  </section>
-  <section class="slide" id="solution">Crowdmi.nr tells you where the best investments are across all major crowdfunding sites in real time.</section>
-  <section class="slide" id="mockup">Show the actual drawings for the proposed web app.</section>
-  <section class="slide" id="stack">Show the stack</section>
+<template name="layout">
+  {{yield}}
+</template>
+
+<template name="home">
+  <h1>You're at home</h1>
+</template>
+
+<template name="about">
+  <div class="slides container">
+    <p>4 minutes max</p>
+    <section class="slide" id="title">
+      <h1><span class="bold">Crowdminr</span></h1>
+      <h2>Bloomberg, for Crowdfunding</h2>
+    </section>
+    <section class="slide" id="problem">
+      <h1>Finance is being democratised. <span class="bold">But not enough.</span></h1>
+      <ul>
+        <li>Crowdfunding promises great returns for the rest of us.</li>
+        <li>But we can't keep track of the best deals!</li>
+      </ul>
+    </section>
+    <section class="slide" id="solution">
+    <h1>Crowdmi.nr tells you where the <span class="bold">best investments</span>  are across all major crowdfunding sites <span class="bold">in real time.</span></h1>
+    </section>
+    <section class="slide" id="mockup">Show the actual drawings for the proposed web app.</section>
+    <section class="slide" id="stack">Show the stack</section>
+  </div>
 </template>
