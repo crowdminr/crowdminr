@@ -1,0 +1,48 @@
+@import 'nib'
+
+body
+  .content
+    font-family 'DIN WebLight', sans-serif
+    font-weight 100
+    text-align center
+    h1
+      font-weight 100
+      .bold
+        font-family 'DIN WebMedium', sans-serif
+        font-weight 900
+    h2
+      font-weight 100
+
+  .slide
+    // display none
+    opacity 0
+    transition opacity 1s
+    &.current
+      // display block
+      opacity 1
+
+.container
+  width 970px
+  padding-left auto
+  padding-right auto
+
+ul
+  list-style-type none
+
+@font-face
+  font-family: 'DIN Web'
+  font-style: normal
+  font-weight: 200
+  src: local('DIN WebLight'), local('DINWeb-Light'), url(/fonts/DINWeb-Light.woff) format('woff')
+
+@font-face
+  font-family: 'DIN Web'
+  font-style: normal
+  font-weight: 300
+  src: local('DIN Web'), local('DINWeb'), url(/fonts/DINWeb.woff) format('woff')
+
+@font-face
+  font-family: 'DIN Web'
+  font-style: normal
+  font-weight: 400
+  src: local('DIN WebMedium'), local('DINWeb-Medium'), url(/fonts/DINWeb-Medium.woff) format('woff')
