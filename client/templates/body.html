@@ -28,14 +28,47 @@
 
 <template name="list-ranking">
   <div class="list-ranking">
-    <ul>
-      {{#each loans}}
-      <li class="list-item">
-        Estimated net return: {{rate}}%
-      </li>
-      {{/each}}
+    {{> list}}
+    {{> details}}
+  </div>
+</template>
+
+<template name="list">
+  <ul>
+    {{#each loans}}
+      {{> item}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="item">
+  <li class="list-item {{current}}">
+    <h3>{{title}}</h3>
+    <img src="{{picture}}" style="width: 100px">
+    <div style="float: right; margin: -15px 30px">
+      <p>Platform: {{platform}}</p>
+      <p>Estimated net return: {{rate}}%</p>
+      <p>Estimated risk: {{risk}}%</p>
+    </div>
+    <div style="clear: both"></div>
+    <img src="images/{{image}}.png" style="float: left; -webkit-transform: scaleX(-1)"/>
+    <div style="clear: both"></div>
+  </li>
+</template>
+
+<template name="details">
+  <div class="details">
+    <h2>Details</h2>
+    <p>Insert Fancy d3 graph showing:</p>
+    <ul style="list-style-type: circle">
+      <li style="padding: 2px; background-color: white">realtime evolution of prices
+      <li style="padding: 2px; background-color: white">realtime prediction of closing price/time, ideal time to act
+      <li style="padding: 2px; background-color: white">Net Present Value
+      <li style="padding: 2px; background-color: white">risk distribution
+      <li style="padding: 2px; background-color: white">etc...
     </ul>
-    <div class="details">I'm on the right</div>
+    <footer>Current loan is {{loan}}</footer>
+    <svg class="detailGraph"></svg>
   </div>
 </template>
 
