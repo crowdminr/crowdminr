@@ -1,6 +1,7 @@
 Meteor.publish 'loans', ->
   Loans.find {},
     fields:
+      id: 1
       loan_amnt: 1
       funded_amnt: 1
       term: 1

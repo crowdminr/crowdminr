@@ -29,7 +29,6 @@
 <template name="list-ranking">
   <div class="list-ranking">
     {{> list}}
-    {{> details}}
   </div>
 </template>
 
@@ -44,14 +43,13 @@
 <template name="item">
   <li class="list-item {{current}}">
     <h3>{{title}}</h3>
-    <img src="{{picture}}" style="width: 100px">
     <div style="float: right; margin: -15px 30px">
-      <p>Platform: {{platform}}</p>
-      <p>Estimated net return: {{rate}}%</p>
-      <p>Estimated risk: {{risk}}%</p>
+      <p>Estimated net return: {{int_rate}}%</p>
+      <p>Estimated risk: {{exp_default_rate}}%</p>
+      <p>Place: {{addr_city}}, {{addr_state}}</p>
     </div>
     <div style="clear: both"></div>
-    <img src="images/{{image}}.png" style="float: left; -webkit-transform: scaleX(-1)"/>
+    <a href="{{url}}" target="_blank"><div style="text-align: center; background-color: grey; color: blue; padding: 10px">Show me the loan!</div></a>
     <div style="clear: both"></div>
   </li>
 </template>
@@ -72,26 +70,3 @@
   </div>
 </template>
 
-<template name="about">
-  <div class="slides container">
-    <section class="slide" id="title">
-      <h1><span class="bold">Crowdmi.nr</span></h1>
-      <h2>Bloomberg,<br /> for Crowdfunding</h2>
-    </section>
-    <section class="slide" id="problem">
-      <h2>Finance is being democratised.</h2>
-      <h2><span class="bold">But not enough.</span></h2>
-      <ul>
-        <li>Crowdfunding promises great returns for the rest of us.</li>
-        <li>But we can't keep track of the best deals!</li>
-      </ul>
-    </section>
-    <section class="slide" id="solution">
-    <h2><span class="bold">Beat the Bankers</span></h2>
-    <p>Crowdmi.nr tells you where the <span class="bold">best investments</span>  are <br /> across all major crowdfunding sites <span class="bold">in real time.</span></p>
-    </section>
-    <section class="slide" id="stack">
-      <img src="/images/stack.png">
-    </section>
-  </div>
-</template>
