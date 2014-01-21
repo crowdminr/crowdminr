@@ -14,5 +14,3 @@ Template.item.events
     Session.set 'currentLoan', @_id
     # template data, if any, is available in 'this'
 
-Template.details.loan = -> Session.get 'currentLoan'
-

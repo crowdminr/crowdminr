@@ -2,6 +2,7 @@ Meteor.publish 'loans', ->
   Loans.find {},
     fields:
       id: 1
+      title: 1
       loan_amnt: 1
       funded_amnt: 1
       term: 1
@@ -10,3 +11,4 @@ Meteor.publish 'loans', ->
       url: 1
       addr_city: 1
       addr_state: 1
+      finishes: 1
