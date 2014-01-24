@@ -1,6 +1,6 @@
-Template.returns.created = ->
+Template.list.created = ->
 
-Template.returns.rendered = ->
+Template.list.rendered = ->
   unless @_graph
     svg = d3.select @find 'svg.returns'
     @_graph = new window.ReturnsGraph svg
@@ -19,7 +19,11 @@ Template.returns.rendered = ->
       changed: @_list.render
       removed: @_list.render
 
-Template.returns.destroyed = ->
+Template.list.destroyed = ->
   @_stop_graph()
   @_stop_list()
+
+Template.list.events
+  'change select': (event) ->
+    Session.set 'sortBy', field
 

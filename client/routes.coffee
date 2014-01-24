@@ -11,5 +11,5 @@ Router.map ->
   @route 'about',
     path: '/about'
 
-  @route 'returns',
-    path: '/returns'
+  @route 'list',
+    path: '/list'
