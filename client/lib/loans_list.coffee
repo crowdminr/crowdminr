@@ -1,13 +1,14 @@
 template = (d) ->
   percent_funded = 100 * (d.funded_amnt / d.loan_amnt)
   """
-  <div class="funding_bar" style="width: #{percent_funded}%"></div>
-  <div class="test">
-    <div>#{percent_funded}%</div>
-    <a href="#{d.url}" target="_blank">
-      <button type="button" class="btn btn-primary">Take me there!</button>
-    </a>
-    <div class="time-left"></div>
+  <div class="funding_bar" style="width: #{percent_funded}%">
+    <div class="loan_stats">
+      <div>#{Math.round(percent_funded*10)/10}%</div>
+      <a href="#{d.url}" target="_blank">
+        <button type="button" class="btn btn-primary">Take me there!</button>
+      </a>
+      <div class="time-left"></div>
+    </div>
   </div>
   """
 
@@ -37,20 +38,25 @@ class @LoansList
 
   render: =>
     createCountdown = ->
-      element = @
-      loan = d3.select(@parentNode.parentNode).datum()
-      time = timeLeft loan
 
-      updateElement = (timeLeft) ->
+      updateElement = (timeLeft) =>
         text = formatTime timeLeft
-        $(element).text text
-    
-      new Countdown time, updateElement
+        $(@).text text
+
+      updateUrgent = (timeLeft) =>
+        fundingBar = d3.select(@parentNode.parentNode)
+        urgent = timeLeft.asMinutes() < 100
+        fundingBar.classed("urgent", urgent)
+
+      loan = d3.select(@parentNode.parentNode.parentNode).datum()
+      time = timeLeft loan
+      new Countdown time, (timeLeft) ->
+        updateElement timeLeft
+        updateUrgent timeLeft
 
     li = @ul.selectAll("li")
             .data(Loans.find().fetch(), (loan) -> loan.id)
             .html(template)
-#           .classed('current', (d) -> )
 
     li.enter()
       .append('li')
