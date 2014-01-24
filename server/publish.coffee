@@ -11,4 +11,5 @@ Meteor.publish 'loans', ->
       url: 1
       addr_city: 1
       addr_state: 1
-      finishes: 1
+      list_d: 1
+      exp_d: 1
