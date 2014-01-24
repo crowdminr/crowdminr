@@ -1,68 +1,12 @@
 <template name="returns">
   <div class="joobstrab_area top_area">
-    <div class="joobstrap_section sourrounding_wrapper" id="header_slider">
-      <div class"progress progress-striped active" style="width: 30%">
-        <div class="progress-bar" role="progressbar" aria-valuenow="0.65" aria-valuemin="0" aria-valuemax="100" style="width: #{d.funded_amnt / d.loan_amnt}%">
-          <span class="sr-only">#{d.funded_amnt / d.loan_amnt}% Complete</span>
-        </div>
+    <div class="joobstrap_section sourrounding_wrapper">
+      <div class="text-align-center">
+        <ul class="loans"></ul>
       </div>
-      <div class="inner_wrapper">
-        <div class="container">
-          <div class="text-align-center row">
-            <h1>Live LendingClub Loans: Risk/Return</h1>
-            <div class="col-md-4">
-              <h2>Loans list</h2>
-              <ul class="loans"></ul>
-            </div>
-            <div class="col-md-8">
-              <h2>Returns graph</h2>
-              <svg class="returns"></svg>
-            </div>
-          </div>
-        </div>
+      <div>
+        <svg class="returns"></svg>
       </div>
     </div>
-  </div>
-
-    <header>
-      <p>
-        <label>Risk Tolerance: </label>
-        <select>
-          <option value="low">Loud noises scare me</option>
-          <option value="medium">I'm prepared to take some risk</option>
-          <option value="high">I just want to maximise my expected return</option>
-        </select>
-      </p>
-    </header>
-    <!-- {{> list-ranking}} -->
   </div>
 </template> 
-
-<template name="list-ranking">
-  <div class="list-ranking">
-    {{> list}}
-  </div>
-</template>
-
-<template name="list">
-  <ul>
-    {{#each loans}}
-      {{> item}}
-    {{/each}}
-  </ul>
-</template>
-
-<template name="item">
-  <li class="list-item {{current}}">
-    <h3>{{title}}</h3>
-    <div style="float: right; margin: -15px 30px">
-      <p>Estimated net return: {{int_rate}}%</p>
-      <p>Estimated risk: {{exp_default_rate}}%</p>
-      <p>Place: {{addr_city}}, {{addr_state}}</p>
-    </div>
-    <div style="clear: both"></div>
-    <a href="{{url}}" target="_blank"><div style="text-align: center; background-color: grey; color: blue; padding: 10px">Show me the loan!</div></a>
-    <div style="clear: both"></div>
-  </li>
-</template>
-
