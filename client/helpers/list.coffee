@@ -3,18 +3,20 @@ Template.list.rendered = ->
     svg = d3.select @find 'svg.returns'
     @_graph = new window.ReturnsGraph svg
     # only need to use stop if not inside a Deps.autorun
+    sleepyGraphRender = window.sleepyCallback @_graph.render
     @_graph_stopper = Loans.find().observe
-      added: @_graph.render
-      changed: @_graph.render
-      removed: @_graph.render
+      added: sleepyGraphRender
+      changed: sleepyGraphRender
+      removed: sleepyGraphRender
 
     ul = d3.select @find 'ul.loans'
     @_list = new window.LoansList ul
     # only need to use stop if not inside a Deps.autorun
+    sleepyListRender = window.sleepyCallback @_list.render
     @_list_stopper = Loans.find().observe
-      added: @_list.render
-      changed: @_list.render
-      removed: @_list.render
+      added: sleepyListRender
+      changed: sleepyListRender
+      removed: sleepyListRender
 
     @_rendered = true
 
