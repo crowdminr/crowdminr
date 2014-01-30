@@ -3,11 +3,14 @@ template = (d) ->
   """
   <div class="funding_bar" style="width: #{percent_funded}%">
     <div class="loan_stats">
-      <div>#{Math.round(percent_funded*10)/10}%</div>
+      <div class="funding_percent">#{Math.round(percent_funded*10)/10}%</div>
+      <div class="time_left"></div>
+    </div>
+    <div class="hover_mask">
+      <button type="button" class="btn btn-xs btn-default details">Details</button>
       <a href="#{d.url}" target="_blank">
-        <button type="button" class="btn btn-primary">Take me there!</button>
+        <button type="button" class="btn btn-xs btn-default go">Take me there!</button>
       </a>
-      <div class="time-left"></div>
     </div>
   </div>
   """
@@ -45,7 +48,7 @@ class @LoansList
 
       updateUrgent = (timeLeft) =>
         fundingBar = d3.select(@parentNode.parentNode)
-        urgent = timeLeft.asMinutes() < 100
+        urgent = timeLeft.asMinutes() < 30
         fundingBar.classed("urgent", urgent)
 
       loan = d3.select(@parentNode.parentNode.parentNode).datum()
@@ -64,6 +67,6 @@ class @LoansList
     li.exit().remove()
 
     li.html(template)
-      .selectAll('.time-left')
+      .selectAll('.time_left')
       .each(createCountdown)
 

@@ -1,13 +1,13 @@
 Template.list.rendered = ->
   unless @_rendered
-    svg = d3.select @find 'svg.returns'
-    @_graph = new window.ReturnsGraph svg
-    # only need to use stop if not inside a Deps.autorun
-    sleepyGraphRender = window.sleepyCallback @_graph.render
-    @_graph_stopper = Loans.find().observe
-      added: sleepyGraphRender
-      changed: sleepyGraphRender
-      removed: sleepyGraphRender
+    # svg = d3.select @find 'svg.returns'
+    # @_graph = new window.ReturnsGraph svg
+    # # only need to use stop if not inside a Deps.autorun
+    # sleepyGraphRender = window.sleepyCallback @_graph.render
+    # @_graph_stopper = Loans.find().observe
+    #   added: sleepyGraphRender
+    #   changed: sleepyGraphRender
+    #   removed: sleepyGraphRender
 
     ul = d3.select @find 'ul.loans'
     @_list = new window.LoansList ul
@@ -20,8 +20,18 @@ Template.list.rendered = ->
 
     @_rendered = true
 
+    $(@find '#risk-slider').slider(
+      min: 0
+      max: 1
+      step: 0.01
+      value: 1
+      tooltip: 'hide'
+    ).on 'slide', (event) ->
+      Session.set 'risk', event.value
+      
+
 Template.list.destroyed = ->
-  @_graph_stopper.stop()
+  # @_graph_stopper.stop()
   @_list_stopper.stop()
 
 Template.list.events

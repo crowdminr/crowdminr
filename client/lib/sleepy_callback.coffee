@@ -1,4 +1,4 @@
-@sleepyCallback = (callback, snoozeInterval=1000) ->
+@sleepyCallback = (callback, snoozeInterval=100) ->
   snoozing = stale = false
 
   wakeAndCheck = ->

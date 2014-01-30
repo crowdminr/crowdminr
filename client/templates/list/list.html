@@ -1,12 +1,17 @@
 <template name="list">
-  <div class="joobstrab_area top_area">
-    <div class="joobstrap_section sourrounding_wrapper">
-      <div class="text-align-center">
-        <ul class="loans"></ul>
+  <div class="page_wrapper">
+    <div class="text-align-center" id="loans_column">
+      <div id="risk-widget">
+        <p>Conservative</p>
+        {{#constant}}
+        <div id="risk-slider"></div>
+        {{/constant}}
+        <p>Aggressive</p>
       </div>
-      <div>
-        <svg class="returns"></svg>
-      </div>
+      <p>{{profile}}</p>
+      {{#constant}}
+      <ul class="loans"></ul>
+      {{/constant}}
     </div>
   </div>
 </template> 

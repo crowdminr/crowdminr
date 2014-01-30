@@ -2,7 +2,7 @@
 
 greenish  = rgb(79,198,128)
 yellowish = rgb(255,245,114)
-list-width = 100px
+list-width = 350px
 
 
 @keyframes urgent
@@ -13,36 +13,86 @@ list-width = 100px
   100%
     background yellowish
 
+html, body
+  height 100%
+
 svg.returns
+  position fixed
+  margin-top 50px
   margin-left 80px
 
-ul.loans
-  list-style none
-  padding 0
-  li
-    margin 5px
-    border-radius 3px
-    box-shadow 0 1px 3px 0 
-    font-size 0.6875em
-    .funding_bar
-      position relative
-      background-color greenish
-      height 100%
-      &.urgent
-        animation urgent 4s infinite alternate
-      .hover_mask
-        background-color rgba(0,0,0,0)
-        z-index 1
-        display none
-        position absolute
-        top 0
-        right 0
-        bottom 0
-        left 0
-      .loan_stats
-        background-color rgba(255,255,255,0.7)
+.page_wrapper
+  float left
+  width 100%
+  height 100%
+  box-sizing border-box
+  background #fff
+
+  #graphic_column
+    width 100%
+    height 100%
+
+  #loans_column
+    width list-width
+    margin-left auto
+    margin-right auto
+    
+    .btn-group
+      margin 20px auto
+      .btn
+        border-color #ccc
+        border-width 1px
+    ul.loans
+      list-style none
+      margin 5px 0
+      padding 0
+      li
+        margin 5px 0
+        border-radius 3px
+        box-shadow 0 1px 3px 0 
+        font-size 0.6875em
+        .funding_bar
+          // overflow hidden
+          position relative
+          background-color greenish
+          height 100%
+          &.urgent
+            animation urgent 4s infinite alternate
+          .hover_mask
+            border-radius 3px
+            width list-width
+            background-color rgba(0,0,0,0)
+            z-index 1
+            display none
+            position absolute
+            top 0
+            right 0
+            bottom 0
+            left 0
+            .btn
+              margin-left 30px
+              margin-right 30px
+          .loan_stats
+            width list-width
+            background-color rgba(255,255,255,0.7)
+            .funding_percent
+              margin-left 7px
+              margin-right -7px
+              text-align left
+              display inline-block
+              width 15%
+              // float left
+              // &:after
+              //   width 100%
+            .time_left
+              margin-left -7px
+              display inline-block
+              width 80%
+              text-align right
+            //   float right
+
 
 .loan_stats:hover + .hover_mask, .hover_mask:hover
-    display block !important
-    background-color rgba(0,0,0,0.3) !important
+  display block !important
+  background-color rgba(0,0,0,0.3) !important
           
