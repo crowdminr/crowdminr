@@ -13,3 +13,4 @@ Meteor.publish 'loans', ->
       addr_state: 1
       list_d: 1
       exp_d: 1
+      net_return: 1

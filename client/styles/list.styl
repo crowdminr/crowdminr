@@ -43,10 +43,15 @@ svg.returns
         border-color #ccc
         border-width 1px
     ul.loans
+      position relative
       list-style none
       margin 5px 0
       padding 0
       li
+        // d3 transitions the opacity to 1
+        opacity 0
+        // transition all 0.5s ease-in-out
+        position absolute
         margin 5px 0
         border-radius 3px
         box-shadow 0 1px 3px 0 
@@ -75,21 +80,18 @@ svg.returns
           .loan_stats
             width list-width
             background-color rgba(255,255,255,0.7)
-            .funding_percent
+            div
+              display inline-block
+
+            .funding_percent, .net_return
               margin-left 7px
               margin-right -7px
               text-align left
-              display inline-block
-              width 15%
-              // float left
-              // &:after
-              //   width 100%
-            .time_left
+              width 25%
+            .time_left, .risk
               margin-left -7px
-              display inline-block
-              width 80%
+              width 75%
               text-align right
-            //   float right
 
 
 .loan_stats:hover + .hover_mask, .hover_mask:hover

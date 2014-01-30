@@ -3,8 +3,10 @@ template = (d) ->
   """
   <div class="funding_bar" style="width: #{percent_funded}%">
     <div class="loan_stats">
-      <div class="funding_percent">#{Math.round(percent_funded*10)/10}%</div>
+      <div class="funding_percent">Filled: #{Math.round(percent_funded*10)/10}%</div>
       <div class="time_left"></div>
+      <div class="net_return">Net return: #{Math.round(d.net_return*10)/10}%</div>
+      <div class="risk">Risk: #{Math.round(d.exp_default_rate*10)/10}%</div>
     </div>
     <div class="hover_mask">
       <button type="button" class="btn btn-xs btn-default details">Details</button>
@@ -39,6 +41,20 @@ formatTime = (timeLeft) ->
 class @LoansList
   constructor: (@ul) ->
 
+  loanComparator: (a, b) ->
+    weight = (l) ->
+      safety = (1 - Session.get 'risk')
+      penalty = safety * l.exp_default_rate
+      l.net_return - penalty
+
+    weight_a = weight a
+    weight_b = weight b
+
+    switch
+      when weight_a > weight_b then -1
+      when weight_a < weight_b then 1
+      else 0
+
   render: =>
     createCountdown = ->
 
@@ -57,14 +73,35 @@ class @LoansList
         updateElement timeLeft
         updateUrgent timeLeft
 
+
+    loans = Loans.find()
+                 .fetch()
+
+    li_height = 60
+
     li = @ul.selectAll("li")
-            .data(Loans.find().fetch(), (loan) -> loan.id)
-            .html(template)
+            .data(loans, (loan) -> loan.id)
+            .filter (d, i) ->
+              console.log "i: #{i}, cond: #{i < Session.get 'listSize'}"
+              i < Session.get 'listSize'
+
+    top = (d, i) -> "#{li_height * i}px"
 
     li.enter()
       .append('li')
 
-    li.exit().remove()
+    li.sort @loanComparator
+
+    li.transition()
+      .duration(750)
+      .style("top", top)
+      .style("opacity", 1)
+
+    li.exit()
+      .transition()
+      .duration(750)
+      .style("opacity", 0)
+      .remove()
 
     li.html(template)
       .selectAll('.time_left')
