@@ -1,3 +1,5 @@
+# XXX This code is truly hideous
+# XXX No specs to refactor with
 template = (d) ->
   percent_funded = 100 * (d.funded_amnt / d.loan_amnt)
   """
@@ -40,6 +42,7 @@ formatTime = (timeLeft) ->
 
 class @LoansList
   constructor: (@ul) ->
+    @li_height = 60
 
   loanComparator: (a, b) ->
     weight = (l) ->
@@ -73,26 +76,28 @@ class @LoansList
         updateElement timeLeft
         updateUrgent timeLeft
 
-
     loans = Loans.find()
                  .fetch()
+                 .sort(@loanComparator)
 
-    li_height = 60
+    if listSize = Session.get 'listSize'
+      loans = loans.splice 0, listSize
 
     li = @ul.selectAll("li")
             .data(loans, (loan) -> loan.id)
-            .filter (d, i) ->
-              console.log "i: #{i}, cond: #{i < Session.get 'listSize'}"
-              i < Session.get 'listSize'
 
-    top = (d, i) -> "#{li_height * i}px"
+    top = (d, i) => "#{@li_height * i}px"
 
     li.enter()
       .append('li')
 
     li.sort @loanComparator
 
+    delay = (d, i) ->
+      500 * i / 1
+
     li.transition()
+      .delay()
       .duration(750)
       .style("top", top)
       .style("opacity", 1)

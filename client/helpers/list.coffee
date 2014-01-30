@@ -45,4 +45,10 @@ Template.list.helpers
       when Session.get('risk') < 0.33 then "I need to be careful with my money"
       when Session.get('risk') < 0.67 then "I can take some risk to get a better return"
       else "I just want to go for the highest interest rates"
+  show_button: ->
+    Session.get 'listSize'
 
+Template.list.events
+  'click button#see-all-loans': (event, template) ->
+    Session.set 'listSize'
+    template._list.render()
