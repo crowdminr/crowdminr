@@ -10,3 +10,7 @@ coffeescript
 stylus
 iron-router
 d3
+accounts-facebook
+accounts-google
+accounts-password
+accounts-twitter
