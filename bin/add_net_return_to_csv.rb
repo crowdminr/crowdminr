@@ -24,7 +24,7 @@ loans[1..-1].each do |l|
   l.unshift net_return l
 end
 
-CSV.open("csvs/latest2.csv", "wb") do |csv|
+CSV.open("csvs/latest.csv", "wb") do |csv|
   loans.each do |l|
     csv << l
   end
