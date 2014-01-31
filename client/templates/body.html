@@ -38,7 +38,15 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/list">Live Loans</a></li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="/#contact">Contact</a></li>
+                    {{#if currentUser}}
+                      {{#if loggingIn}}
+                        {{> loggingInButton}}
+                      {{else}}
+                        {{> loggedInButton}}
+                      {{/if}}
+                    {{else}}
+                      {{> loggedOutButton}}
+                    {{/if}}
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div>
