@@ -1,13 +1,13 @@
 <template name="list">
   <div class="page_wrapper">
-     <div class="alert alert-warning" style="text-align: center; display: none">Loan Fill Frenzy!!!</div>
+     <div class="alert alert-danger" style="text-align: center; display: none">Loan Fill Frenzy!!!</div>
     <div class="text-align-center" id="risk-widget">
       <p class="risk-appetite">Conservative</p>
       {{#constant}}
       <div id="risk-slider"></div>
       {{/constant}}
       <p class="risk-appetite">Aggressive</p>
-      <p>{{profile}}</p>
+      <p><i>&ldquo;{{profile}}&rdquo;</i></p>
     </div>
     <div class="text-align-center" id="loans_column">
       {{#constant}}
