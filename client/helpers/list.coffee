@@ -52,3 +52,5 @@ Template.list.events
   'click button#see-all-loans': (event, template) ->
     Session.set 'listSize'
     template._list.render()
+  'click button#delete-loans': () ->
+    Meteor.call 'deleteLoans'
