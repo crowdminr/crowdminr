@@ -3,7 +3,8 @@
 template = (d) ->
   percent_funded = 100 * (d.funded_amnt / d.loan_amnt)
   """
-  <div class="funding_bar" style="width: #{percent_funded}%">
+  <div class="relative-container">
+    <div class="funding_bar" style="width: #{percent_funded}%"></div>
     <div class="loan_stats">
       <div class="funding_percent">Filled: #{Math.round(percent_funded*10)/10}%</div>
       <div class="time_left"></div>
