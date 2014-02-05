@@ -6,10 +6,19 @@ template = (d) ->
   <div class="relative-container">
     <div class="funding_bar" style="width: #{percent_funded}%"></div>
     <div class="loan_stats">
-      <div class="funding_percent">Filled: #{Math.round(percent_funded*10)/10}%</div>
-      <div class="time_left"></div>
-      <div class="net_return">Net return: #{Math.round(d.net_return*10)/10}%</div>
-      <div class="risk">Risk: #{Math.round(d.exp_default_rate*10)/10}%</div>
+      <span class="metric">
+        <b>#{Math.round(d.net_return*10)/10}%</b>
+        <p>NET RETURN</p>
+      </span>
+      <span class="metric">
+        <b>#{Math.round(d.exp_default_rate*10)/10}%</b>
+        <p>RISK</p>
+      </span>
+      <span class="metric">
+        <b>#{Math.round(percent_funded*10)/10}%</b>
+        <p>FILLED</p>
+      </span>
+      <p class="time_left"></p>
     </div>
     <div class="hover_mask">
       <button type="button" class="btn btn-xs btn-default details">Details</button>
@@ -43,7 +52,7 @@ formatTime = (timeLeft) ->
 
 class @LoansList
   constructor: (@ul) ->
-    @li_height = 60
+    @li_height = 98
 
   loanComparator: (a, b) ->
     weight = (l) ->
@@ -67,7 +76,7 @@ class @LoansList
         $(@).text text
 
       updateUrgent = (timeLeft) =>
-        fundingBar = d3.select(@parentNode.parentNode)
+        fundingBar = d3.select(@parentNode.parentNode.parentNode)
         urgent = timeLeft.asMinutes() < 30
         fundingBar.classed("urgent", urgent)
 
