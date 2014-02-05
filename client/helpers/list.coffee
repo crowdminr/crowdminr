@@ -49,6 +49,6 @@ Template.list.helpers
     Session.get 'listSize'
 
 Template.list.events
-  'click button#see-all-loans': (event, template) ->
+  'click #see-all-loans button': (event, template) ->
     Session.set 'listSize'
     template._list.render()

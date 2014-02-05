@@ -47,15 +47,20 @@ svg.returns
       margin 5px 13px
 
   #loans_column
+    position relative
     width list-width
     margin-left auto
     margin-right auto
 
-    button#see-all-loans
-      position relative
+    #see-all-loans
+      position absolute
+      width 100%
       // 20 boxes, 60px high, plus a bit
-      top 60 * 20 + 23 px
-      margin-bottom 20px
+      top 98 * 20 + 10 px
+      height 60px
+      padding-top 4px
+      margin-top -5px
+      background-color white
     
     ul.loans
       position relative
