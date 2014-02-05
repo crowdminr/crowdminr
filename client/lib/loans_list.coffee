@@ -21,9 +21,8 @@ template = (d) ->
       <p class="time_left"></p>
     </div>
     <div class="hover_mask">
-      <button type="button" class="btn btn-xs btn-default details">Details</button>
       <a href="#{d.url}" target="_blank">
-        <button type="button" class="btn btn-xs btn-default go">Take me there!</button>
+        <button type="button" class="btn btn-xl btn-info go">Take me there!</button>
       </a>
     </div>
   </div>
