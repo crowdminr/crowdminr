@@ -86,7 +86,7 @@ ul.gallery li:hover p, ul.gallery li:hover h5 {display:block;}
  */
 
 .google-map-canvas,
-.google-map-canvas * { .box-sizing(content-box); }
+.google-map-canvas * { box-sizing: content-box; }
 .google-map-canvas iframe, iframe.google-map-canvas {width:100%;border:0px;}
 
 

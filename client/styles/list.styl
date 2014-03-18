@@ -3,8 +3,6 @@
 greenish  = rgb(79,198,128)
 yellowish = rgb(255,245,114)
 list-width = 100%
-widget-width = 550px
-
 
 @keyframes urgent
   0%
@@ -39,12 +37,15 @@ svg.returns
     height 100%
 
   #risk-widget
-    width widget-width
+    // width 550px
     margin-left auto
     margin-right auto
     .risk-appetite
       display inline-block
       margin 5px 13px
+    @media screen and (max-width: 460px)
+      .risk-appetite
+        display none
 
   #loans_column
     position relative
@@ -104,17 +105,16 @@ svg.returns
             margin-top 18px
         .loan_stats
           position relative
-          z-index: 1
+          z-index 1
           width list-width
           background-color rgba(255,255,255,0.7)
           color rgb(52, 73, 94)
           font-family "Lato", Helvetica, Arial, sans-serif
           .metric
             width 20%
-            margin-top: 15px
-            margin-bottom: 12px
+            margin-top 15px
+            margin-bottom 12px
             display inline-block
-            margin 
           b, p
             margin 0
           b

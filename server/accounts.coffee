@@ -48,10 +48,10 @@ Accounts.config
 
 #   user
 
-Accounts.loginServiceConfiguration.remove
+ServiceConfiguration.configurations.remove
   service: 'facebook'
 
-Accounts.loginServiceConfiguration.insert
+ServiceConfiguration.configurations.insert
   service: 'facebook'
   appId: Meteor.settings.facebook.appId
   secret: Meteor.settings.facebook.secret
